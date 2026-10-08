@@ -1,4 +1,4 @@
-# BeltRec Python Reproduction
+
 
 ## 1. What is reproduced
 
@@ -143,17 +143,8 @@ users | items | suppliers | attributes | markets/environments
 - Full objective: `src/losses.py::total_beltrec_loss`
 - HR@10 / NDCG@10 / Recall@20 / MRR@10: `src/metrics.py`
 
-## 7. Differences from the unavailable original implementation
 
-These are deliberate and documented:
-
-- **Pretrained encoders:** represented by precomputed feature arrays because exact checkpoints are not specified.
-- **Environment propensity:** implemented with an MLP classifier because the paper does not define the estimator.
-- **Relation transforms:** implemented as a memory-efficient shared transform with relation-specific scaling, reflecting the paper's parameter-sharing statement while avoiding a full dense matrix per edge.
-- **Evaluation candidates:** `evaluate.py` uses one held-out positive plus sampled negatives by default. Set a larger candidate count or adapt it to full-catalog ranking for your exact protocol.
-- **Early stopping:** the minimal training script saves the final model; adding validation-based early stopping is straightforward if exact reproduction of the stated patience-15 protocol is required.
-
-## 8. Expected paper-level settings
+## 7. Expected paper-level settings
 
 From the manuscript:
 
@@ -168,7 +159,3 @@ From the manuscript:
 - graph: 2 layers, hidden 256, dropout 0.2
 - gate hidden widths: `256, 128, 64`
 - objective weights: `lambda_align=0.15`, `lambda_env=0.25`, `lambda_tax=0.10`, `lambda_l2=1e-5`
-
-## 9. Reproducing the reported experimental numbers
-
-To reproduce the exact tables, you still need the original WFT-CB data, the exact pretrained vision/text checkpoint choices, the exact construction of cross-environment balanced samples, and the original baseline configurations/seeds. This repository gives you a clean executable implementation of the architecture and objective rather than fabricating unavailable experimental evidence.
