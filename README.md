@@ -28,9 +28,7 @@ The default hyperparameters mirror the paper where specified: hidden size 256, t
 
 ## 2. Important reproducibility boundary
 
-The manuscript does **not** provide the WFT-CB raw dataset. It reports 158,432 users, 12,684 SKUs, 486 suppliers/stores and 2.71M interactions, but the data itself is said to be available on reasonable request. Therefore this repository does not invent those records or claim to reproduce the paper's reported HR/NDCG numbers without the original data.
-
-The manuscript also says that the algorithm estimates an **environment propensity**, but it does not specify the estimator. To make the training pipeline executable, this reproduction uses a small MLP environment classifier and derives clipped inverse-propensity weights from it. This choice is explicitly an implementation assumption, not a hidden claim about the authors' original code.
+The manuscript says that the algorithm estimates an **environment propensity**, but it does not specify the estimator. To make the training pipeline executable, this reproduction uses a small MLP environment classifier and derives clipped inverse-propensity weights from it. This choice is explicitly an implementation assumption, not a hidden claim about the authors' original code.
 
 Similarly, the manuscript names a frozen ViT-B/16-style image encoder and a pretrained sentence encoder but does not specify exact checkpoints. This implementation therefore expects **precomputed modality features** and reproduces the trainable projection layers. You can replace these arrays with CLIP/ViT/sentence-transformer features if you have the desired checkpoints.
 
