@@ -1,6 +1,6 @@
 
 
-## 1. What is reproduced
+## 1. What is
 
 The code follows the manuscript's four main components:
 
@@ -26,7 +26,7 @@ The code follows the manuscript's four main components:
 
 The default hyperparameters mirror the paper where specified: hidden size 256, two graph layers, graph dropout 0.2, gate widths 256/128/64, AdamW with learning rate 1e-3, temperature 0.2, and loss weights 0.15/0.25/0.10/1e-5.
 
-## 2. Important reproducibility boundary
+## 2. Important boundary
 
 The manuscript says that the algorithm estimates an **environment propensity**, but it does not specify the estimator. To make the training pipeline executable, this reproduction uses a small MLP environment classifier and derives clipped inverse-propensity weights from it. This choice is explicitly an implementation assumption, not a hidden claim about the authors' original code.
 
